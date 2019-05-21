@@ -1,0 +1,55 @@
+.news-letter-bg {
+    background: #D3CBCB;
+}
+
+
+.news-letter h2 {
+    text-align: center;
+    font-family: 'Arial Black';
+    text-transform: uppercase;
+    color: #000;
+    padding-top: 20px;
+    margin-bottom: 0;
+}
+
+.news-letter h4 {
+    text-align: center;
+    font-family: 'Arial';
+}
+
+.email-form {
+    text-align: center;
+
+    input {
+        width: 70%;
+        height: 60px;
+        border-radius: 20px;
+    }
+
+    button {
+        background-color: $green;
+        width: 25%;
+        height: 50px;
+        color: #fff;
+        border-radius: 10px;
+    }
+}
+
+
+.full-option {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.full-option ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.full-option h3 {
+    border-bottom: 5px solid #fff;
+    padding-top: 40px;
+}

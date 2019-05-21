@@ -1,0 +1,78 @@
+.destinations{
+    background-color:$light-gray;
+    padding: 50px 40px 0px;
+   
+}
+.destinations h1{
+    font-family: 'Anton';
+    text-align: center;
+}
+
+.destinations-article{
+    // ici je mets mes images avant le texte pour les mobiles
+    display: flex;
+    flex-direction: column-reverse;
+    // je veux passer mon texte avant l'img à partir du médium
+    @media (min-width:$bp-medium){
+        flex-direction: column-reverse;
+    }
+    @media (min-width:$bp-large){
+        padding: 0 60px;
+    }
+}
+.destinations-infos{
+    
+    margin-top: 30px;
+    flex-direction: column;
+
+    @media (min-width:$bp-medium){
+        flex-basis: 33.33%;
+    } 
+
+h2{
+    font-family: 'Arial Black';
+    font-size: 2rem;
+    margin: 0;
+}
+h3{
+    margin-top: 0.5rem;
+    color: $dark-gray;
+    text-transform: uppercase;
+    @include puce(0.75rem, $dark-gray);
+}
+p{
+    margin-top: 10px;
+}
+
+.btn{
+    @include button($green, 1rem);
+    margin: 0 5px;
+}
+}
+
+.destinations-img{
+    @media (min-width:$bp-medium){
+        flex-basis: 66.66%;
+        padding-left: 30px;
+    }
+}
+// pour regler la position de mes bouton et flèches
+.owl-nav button{
+    position: absolute;
+    top: $spacer;
+
+@media(min-width: $bp-large){
+    top: calc(50%-1.5rem);
+}
+
+    &.owl-prev{
+        left:$spacer;
+    }
+    &.owl-next{
+        right: $spacer;
+    }
+    .fas{
+        font-size: 3rem;
+        color: #fff;
+    }
+}

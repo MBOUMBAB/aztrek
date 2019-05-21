@@ -1,0 +1,46 @@
+.stellarnav .menu-toggle{
+    font-size: 0;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    span.bars{
+        margin-right: 0;
+        span{
+            width: 40px;
+            height: 4px;
+            margin-bottom: 8px;
+            background-color: $green;
+        }
+    }
+
+  }
+  .stellarnav .close-menu{
+      font-size: 0;
+  }
+  .icon-close{
+      width: 30px;
+
+      &::before,
+      &::after{
+          width: 30px;
+      }
+  }
+
+  .stellarnav ul{
+      @media (min-width: $bp-large){
+          background-color:rgba(12, 31, 199, 0.632);
+          li a{
+              padding: 1rem;
+              color: white;
+              margin: 0 1rem;
+              &:hover{
+                  color: lighten($red, 20%);
+              }
+          }
+      }
+  }
+
+  .stellarnav ul ul{
+      background-color: rgb(45, 22, 177);
+  }

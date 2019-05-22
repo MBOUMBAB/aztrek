@@ -11,6 +11,10 @@
         <label>Photo</label>
         <input type="file" name="photo" class="form-control" required>
     </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea name="description" class="form-control"></textarea>
+    </div>
     <button type="submit" class="btn btn-success">
         <i class="fa fa-check"></i>
         Ajouter

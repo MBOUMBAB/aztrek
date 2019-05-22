@@ -3,7 +3,7 @@ require_once __DIR__ . "/../../../model/database.php";
 
 $id = $_GET["id"];
 
-$service = getOneRow("destination", $id);
+$destination = getOneRow("destination", $id);
 
 require_once __DIR__ . "/../../layout/header.php";
 ?>

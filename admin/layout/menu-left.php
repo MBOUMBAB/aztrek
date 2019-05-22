@@ -15,6 +15,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link <?php echo isActive("/crud/sejour/") ? 'active' : ''; ?>" href="<?php echo SITE_ADMIN; ?>crud/sejour/">
+                    <i class="fa fa-server"></i>
+                    Sejours
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link <?php echo isActive("/crud/categorie/") ? 'active' : ''; ?>" href="<?php echo SITE_ADMIN; ?>crud/categorie/">
                     <i class="fa fa-book"></i>
                     Catégories

@@ -2,17 +2,18 @@
 
 
 
-function insertDestination(string $label, string $photo) {
+function insertDestination(string $label, string $photo, string $description) {
     global $connection;
 
     $query = "
-        INSERT INTO destination (label, photo)
-        VALUES (:label, :photo)
+        INSERT INTO destination (label, photo, description)
+        VALUES (:label, :photo, :description)
     ";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":label", $label);
     $stmt->bindParam(":photo", $photo);
+    $stmt->bindParam(":description", $description);
     $stmt->execute();
 }
 

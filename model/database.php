@@ -75,122 +75,16 @@ function deleteRow(string $table, int $id) {
     return null;
 }
 
-function getUtilisateurByEmailMotDePasse(string $email, string $password) {
-    global $connection;
-
-    $query = "
-        SELECT *
-        FROM utilisateur
-        WHERE utilisateur.email = :email
-        AND utilisateur.password = SHA1(:password)
-    ";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":email", $email);
-    $stmt->bindParam(":password", $password);
-    $stmt->execute();
-
-    return $stmt->fetch();
-}
 
 
 
 
 
 
-function getAllSejoursByDestination(int $id) {
-    global $connection;
-
-    $query = "
-        SELECT
-            sejour.*,
-           destination.label ASdestination
-        FROM sejour
-        INNER JOIN destination ON sejour.destination_id = destination.id
-        WHERE sejour.destination_id = :id
-    ";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
-
-function getOneSejour(int $id) {
-    global $connection;
-
-    $query = "
-        SELECT
-            sejour.*,
-            destination.label AS destination
-        FROM sejour
-        INNER JOIN destination ON sejour.destination_id = destination.id
-        WHERE sejour.id = :id
-    ";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetch();
-}
-
-//function getAllCategorieBySejour(int $id) {
-//    global $connection;
-//
-//    $query = "
-//        SELECT *
-//            sejour.titre AS sejour
-//        FROM categorie
-//        INNER JOIN sejour_has_categorie rht ON categorie.id = rht.categogie_id
-//        WHERE rht.sejour_id = :id
-//    ";
-
-//    $stmt = $connection->prepare($query);
-//    $stmt->bindParam(":id", $id);
-//    $stmt->execute();
-//
-//    return $stmt->fetchAll();
-//}
 
 
 
 
-function getAllDepartBySejour(int $id) {
-    global $connection;
 
-    $query = "
-        SELECT
-            depart.*,
-           sejour.titre AS sejour
-        FROM depart
-        INNER JOIN sejour ON depart.sejour_id = sejour.id
-        WHERE depart.sejour_id = :id
-    ";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
-
-function getAllCategorieBySejour(int $id) {
-    global $connection;
-
-    $query = "
-        SELECT categorie.*
-        FROM categorie
-        INNER JOIN sejour_has_categorie shc ON categorie.id = shc.categorie_id
-        WHERE shc.sejour_id = :id
-    ";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
 
 

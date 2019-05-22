@@ -30,7 +30,7 @@ require_once __DIR__ . "/../../layout/header.php";
 <table class="table table-striped table-bordered">
     <thead class="thead-light">
         <tr>
-            <th>Label</th>
+            <th>Titre</th>
             <th>Photo</th>
             <th class="actions">Actions</th>
         </tr>
@@ -38,7 +38,7 @@ require_once __DIR__ . "/../../layout/header.php";
     <tbody>
         <?php foreach ($sejours as $sejour) : ?>
             <tr>
-                <td><?= $sejour["label"]; ?></td>
+                <td><?= $sejour["titre"]; ?></td>
                 <td>
                     <img src="../../../uploads/sejours/<?= $sejour["photo"]; ?>" class="img-thumbnail" alt="">
                 </td>

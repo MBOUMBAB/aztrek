@@ -3,17 +3,17 @@ require_once __DIR__ . "/../../security.php";
 require_once __DIR__ . "/../../../model/database.php";
 
 $id = $_POST["id"];
-$label = $_POST["label"];
+$titre = $_POST["titre"];
 $photo = $_FILES["photo"]["name"];
 
 if ($photo) {
     // Gérer l'upload du fichier
-    move_uploaded_file($_FILES["photo"]["tmp_name"], "../../../uploads/destinations/" . $photo);
+    move_uploaded_file($_FILES["photo"]["tmp_name"], "../../../uploads/sejours/" . $photo);
 } else {
-    $destination = getOneRow("destination", $id);
-    $photo = $destination["photo"];
+    $sejour = getOneRow("sejour", $id);
+    $photo = $sejour["photo"];
 }
 
-updateDestination($id, $label, $photo);
+updateSejour($id, $titre, $photo);
 
 header("Location: index.php");

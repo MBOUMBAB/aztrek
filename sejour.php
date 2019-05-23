@@ -46,10 +46,9 @@ getHeader($sejour["titre"]);
                                         <p>Nombre de place: <?= $depart["nb_places"]; ?></p>
                                         <p>Pays de départ : <?= $depart["pays"]; ?></p>
                                     </article>
+
                                 <?php endforeach; ?>
-
                             </section>
-
 
                             <section class="categorie-content">
                                 <p>Categorie :
@@ -57,6 +56,14 @@ getHeader($sejour["titre"]);
                                         <?= $categorie["titre"]; ?>
                                     <?php endforeach; ?>
                                 </p>
+                            </section>
+                            <section>
+                                <form action="sejour.php" method="post">
+                                    <input type="hidden" name="id" value="<?= $sejour["id"]; ?>">
+                                    <button type="submit" class="btn.btn ">
+                                        Reserver
+                                    </button>
+                                </form>
                             </section>
 
                             <div class="btn"><a href="">tous nos departs</a></div>

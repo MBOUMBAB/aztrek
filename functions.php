@@ -1,5 +1,6 @@
 <?php
 
+
 function getHeader(string $title) {
     require_once "layout/header.php";
 }

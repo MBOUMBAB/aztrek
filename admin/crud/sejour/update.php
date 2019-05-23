@@ -4,7 +4,8 @@ require_once __DIR__ . "/../../../model/database.php";
 $id = $_GET["id"];
 
 $sejour = getOneRow("sejour", $id);
-
+$destinations = getAllRows("destination");
+$categories = getAllRows("categorie");
 require_once __DIR__ . "/../../layout/header.php";
 ?>
 
@@ -16,20 +17,25 @@ require_once __DIR__ . "/../../layout/header.php";
             <input type="text" name="titre" value="<?= $sejour["titre"]; ?>" class="form-control" placeholder="Titre" required>
         </div>
         <div class="form-group">
+
             <div class="form-group">
                 <label>Destination</label>
                 <select name="destination_id" class="form-control">
                     <?php foreach ($destinations as $destination) : ?>
+                    <?php $selected = ($sejour["destination_id"] == $destination["id"]) ? "selected" : ""; ?>
                         <option value="<?= $destination["id"]; ?>">
                             <?= $destination["label"]; ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
+
             </div>
+
             <div class="form-group">
                 <label>Categorie</label>
                 <select name="categorie_ids[]" class="form-control" multiple>
                     <?php foreach ($categories as $categorie) : ?>
+                    <?php $selected = ($sejour["categorie_id"] == $categorie["id"]) ? "selected" : ""; ?>
                         <option value="<?= $categorie["id"]; ?>">
                             <?= $categorie["titre"]; ?>
                         </option>
@@ -42,15 +48,15 @@ require_once __DIR__ . "/../../layout/header.php";
             </div>
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description" class="form-control"></textarea>
+                <textarea name="description" class="form-control"><?= $sejour["description"]; ?></textarea>
             </div>
             <div class="form-group">
                 <label>Durée</label>
-                <input type="number" name="duree" class="form-control" required>
+                <input type="number" name="duree" value="<?= $sejour["duree"]; ?>" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>Niveau</label>
-                <input type="number" name="niveau" class="form-control" required>
+                <input type="number" name="niveau" value="<?= $sejour["niveau"]; ?>" class="form-control" required>
             </div>
 
             <input type="hidden" name="id" value="<?= $sejour["id"]; ?>">

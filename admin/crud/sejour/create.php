@@ -11,8 +11,8 @@ require_once __DIR__ . "/../../layout/header.php";
 
 <form action="create_query.php" method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label>Titre</label>
-        <input type="text" name="titre" class="form-control" placeholder="Label" required>
+        <label>Titre du séjour</label>
+        <input type="text" name="titre" class="form-control" placeholder="Titre" required>
     </div>
     <div class="form-group">
         <label>Destination</label>

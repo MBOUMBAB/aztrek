@@ -1,13 +1,31 @@
 <?php
 
 
+
+function getAllSejours() {
+    global $connection;
+
+    $query = "
+        SELECT
+            sejour.*,
+           destination.label AS destination
+        FROM sejour
+        INNER JOIN destination ON sejour.destination_id = destination.id
+    ";
+
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}
+
 function getAllSejoursByDestination(int $id) {
     global $connection;
 
     $query = "
         SELECT
             sejour.*,
-           destination.label ASdestination
+           destination.label AS destination
         FROM sejour
         INNER JOIN destination ON sejour.destination_id = destination.id
         WHERE sejour.destination_id = :id
@@ -80,21 +98,28 @@ function insertSejourCategorie(int $sejour_id, int $categorie_id)
     $stmt->execute();
 }
 
-function getAllSejoursByPays(int $id) {
+function updateSejour(int $id, string $titre, string $photo, string $duree, string $niveau, string $description,
+                      int $destination_id, array $categorie_ids) {
     global $connection;
 
     $query = "
-        SELECT
-            sejour.*,
-           pays.nom AS pays
-        FROM sejour
-        INNER JOIN pays ON sejour.pays_id = pays.id
-        WHERE sejour.pays_id = :id
+        UPDATE sejour
+        SET titre = :titre,
+            photo = :photo,
+            duree = :duree,
+            niveau = :niveau,
+            description = :description,
+            destination_id = :destination_id
+        WHERE id = :id
     ";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":titre", $titre);
+    $stmt->bindParam(":photo", $photo);
+    $stmt->bindParam(":duree", $duree);
+    $stmt->bindParam(":niveau", $niveau);
+    $stmt->bindParam(":description", $description);
+    $stmt->bindParam(":destination_id", $destination_id);
     $stmt->execute();
-
-    return $stmt->fetchAll();
 }

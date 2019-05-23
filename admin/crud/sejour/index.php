@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../../../model/database.php";
 
-$sejours = getAllRows("sejour");
+$sejours = getAllSejours();
 
 require_once __DIR__ . "/../../layout/header.php";
 ?>
@@ -30,18 +30,37 @@ require_once __DIR__ . "/../../layout/header.php";
 <table class="table table-striped table-bordered">
     <thead class="thead-light">
         <tr>
-            <th>Titre</th>
+            <th>Titre du séjour</th>
+            <th>destination</th>
+            <th>Catégorie</th>
             <th>Photo</th>
+            <th>description</th>
+            <th>Durée</th>
+            <th>Niveau</th>
             <th class="actions">Actions</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($sejours as $sejour) : ?>
+            <?php $categories = getAllCategorieBySejour($sejour["id"]); ?>
             <tr>
                 <td><?= $sejour["titre"]; ?></td>
+                <td><?= $sejour["destination"]; ?></td>
+                <td>
+                    <ul>
+                        <?php foreach ($categories as $categorie) : ?>
+                            <li><?= $categorie["titre"]; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </td>
+
                 <td>
                     <img src="../../../uploads/sejours/<?= $sejour["photo"]; ?>" class="img-thumbnail" alt="">
                 </td>
+                <td><?= $sejour["description"]; ?></td>
+                <td><?= $sejour["duree"]; ?></td>
+                <td><?= $sejour["niveau"]; ?></td>
+
                 <td class="actions">
                     <a href="update.php?id=<?= $sejour["id"]; ?>" class="btn btn-warning">
                         <i class="fa fa-edit"></i>
@@ -57,6 +76,8 @@ require_once __DIR__ . "/../../layout/header.php";
                 </td>
             </tr>
         <?php endforeach; ?>
+
+
     </tbody>
 </table>
 
